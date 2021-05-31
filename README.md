@@ -53,7 +53,7 @@ it on the browser side since the `KEY` will be leaked to public!
 6. If the `external_data` is not valid, Tiktok will send an error page rather than showing the `auth page` or the `setup page`
 
    
-##Specification
+## Specification
 
 ### Generation of external_data
 1. Create a json object, which contains the following fields.
