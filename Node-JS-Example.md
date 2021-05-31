@@ -60,14 +60,17 @@ const generator = new TiktokBusinessExternalGenerator(
     }
   );
 
-   // below will throw an exception complaining that the some field in level2 is missing
+   // below will throw an exception complaining that the some field in metaField is missing
+   const payload = {
+       ...level1Fields,
+   }
    const {body,external_data) = generator.encode(payload);
 
 ```
 
 ### generator#decodeAndVerify
 ```
-// This method is used by Tiktok's side to verify whether you external_data is valid or not.
+// This method is used by Tiktok's server side to verify whether you external_data is valid or not.
 // since different external merchants have different keys,
 // we will configure different instances of the generators internally, below is just a simple example
 const generatorForSomeCompany = new TiktokBusinessExternalGenerator(keyForCompany1, {
