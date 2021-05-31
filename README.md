@@ -6,7 +6,7 @@ In this doc, we are going to specify how the `external_data` is generated.
 
 ### Reference implementation
 We've implemented a NodeJs version [here](./Node-JS-Example.md) which will be published to NPM before the final launch.
-You are more than welcome to use the one provided by us may or implement your own using the language you are accustomed to or .
+You are more than welcome to use the one provided by us may or implement your own using the language you are accustomed to by following the specification described below.
 
 We will upgrade any bugfixes or new features whenever possible, stay tuned.
 
