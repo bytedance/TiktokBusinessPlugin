@@ -14,8 +14,8 @@ please hold on for the time being.
 ```
 ## Basic Usage
 ```
-// the final npm name is not decided and is subject to change.
-import {TiktokBusinessExternalDataGenerator} from '@ad/tiktok_business_plugin_helper';
+// the final npm name is not decided and is subject to change. 
+import {TiktokBusinessExternalDataGenerator} from '@placeholderplaceholder@';
 const key = "TEST_KEY"
 
 const generator = new TiktokBusinessExternalDataGenerator(key, {
