@@ -6,7 +6,7 @@ In this doc, we are going to specify how the `external_data` is generated.
 
 ### Reference implementation
 We've implemented a NodeJs version [here](./Node-JS-Example.md) which will be published to NPM before the final launch.
-You are more than welcome to use the one provided by us may or implement your own using the language you are accustomed to by following the specification described below.
+You are more than welcome to use the one provided by us or implement your own using the language you are accustomed to by following the specification described below.
 
 We will upgrade any bugfixes or new features whenever possible, stay tuned.
 
@@ -45,7 +45,7 @@ to
     access token to the external platform. `app_id` and `redirect_uri` are needed to acheive this goal.
      
 4. The `external_data` should be generated with a `KEY` codetermined by the external merchant and Tiktok's server so as to ensure
-this data is neither falsified or tampered with.
+this data is neither falsified nor tampered with.
    
 5. The generation of the `external_data` should be done on the external merchant platform's server side or BFF side. Never generate
 it on the browser side since the `KEY` will be leaked to public!
