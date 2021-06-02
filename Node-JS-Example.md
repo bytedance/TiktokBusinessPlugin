@@ -51,7 +51,7 @@ console.log(external_data);
 
 ### new TiktokBusinessExternalDataGenerator() constructor
 ```
-const generator = new TiktokBusinessExternalGenerator(
+const generator = new TiktokBusinessExternalDataGenerator(
    // key is used to generate hmac, be sure not to expose it to the public or commit to any of your codebase
    // Contact tiktok's representative to get to know the key for your platform
     key,
@@ -86,13 +86,15 @@ const generator = new TiktokBusinessExternalGenerator(
 ### generator#decodeAndVerify
 ```
 // This method is used by Tiktok's server side to verify whether you external_data is valid or not.
+// Normally you don't need to invoke this function
+
 // since different external merchants have different keys,
 // we will configure different instances of the generators internally, below is just a simple example
-const generatorForSomeCompany = new TiktokBusinessExternalGenerator(keyForCompany1, {
+const generatorForSomeCompany = new TiktokBusinessExternalDataGenerator(keyForCompany1, {
     debug: tiktokLogger.log.bind(tiktokLogger),
    });
 
-const generatorForAnotherCompany = new TiktokBusinessExternalGenerator(keyForCompany2, {
+const generatorForAnotherCompany = new TiktokBusinessExternalDataGenerator(keyForCompany2, {
     debug: tiktokLogger.log.bind(tiktokLogger),
    });
 
