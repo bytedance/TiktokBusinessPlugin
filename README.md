@@ -4,6 +4,27 @@
 Every time the end user tries to connect with Tiktok in any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
 In this doc, we are going to specify how the `external_data` is generated.
 
+### Why does `external_data` come into play?
+1. The user clicks the **Connect** button on the **Splash Page**
+   
+2. a new tab will open up, and the possible url might be
+`https://ads.tiktok.com/tbp/auth?external_data=xxxxxxxxxxxx`
+
+3. The url of the tab contains a parameter called `external_data`, which encapsulates all the information Tiktok needs 
+to
+   - identify the shop
+   - the fields which facilitates the creation of Tiktok's adv account and business center on the `setup page`
+   - When the user clicks **Finish Setup** on the setup page, for some external merchants, Tiktok needs to launch an oauth flow to pass the 
+    access token to the external platform. `app_id` and `redirect_uri` are needed to acheive this goal.
+     
+4. The `external_data` should be generated with a `KEY` codetermined by the external merchant and Tiktok's server so as to ensure
+this data is neither falsified nor tampered with.
+   
+5. The generation of the `external_data` should be done on the external merchant platform's server side or BFF side. Never generate
+it on the browser side since the `KEY` will be leaked to public!
+   
+6. If the `external_data` is not valid, Tiktok will send an error page rather than showing the `auth page` or the `setup page`
+
 ### Reference implementation
 We've implemented a NodeJs version [here](./Node-JS-Example.md) which will be published to NPM before the final launch.
 You are more than welcome to use the one provided by us or implement your own using the language you are accustomed to by following the specification described below.
@@ -30,27 +51,6 @@ the external merchant and tiktok is not built. Normally we assume that there is 
 
 - Management page: Once the user finishes the onboarding flow, he/she will see the management page on the external merchant platform.
 This page displays all the config items the user went through as well as the status of the catalog. 
-
-### When `external_data` comes into play
-1. The user clicks the **Connect** button on the **Splash Page**
-   
-2. a new tab will open up, and the possible url might be
-`https://ads.tiktok.com/tbp/auth?external_data=xxxxxxxxxxxx`
-
-3. The url of the tab contains a parameter called `external_data`, which encapsulates all the information Tiktok needs 
-to
-   - identify the shop
-   - the fields which facilitates the creation of Tiktok's adv account and business center on the `setup page`
-   - When the user clicks **Finish Setup** on the setup page, for some external merchants, Tiktok needs to launch an oauth flow to pass the 
-    access token to the external platform. `app_id` and `redirect_uri` are needed to acheive this goal.
-     
-4. The `external_data` should be generated with a `KEY` codetermined by the external merchant and Tiktok's server so as to ensure
-this data is neither falsified nor tampered with.
-   
-5. The generation of the `external_data` should be done on the external merchant platform's server side or BFF side. Never generate
-it on the browser side since the `KEY` will be leaked to public!
-   
-6. If the `external_data` is not valid, Tiktok will send an error page rather than showing the `auth page` or the `setup page`
 
    
 ## Specification
