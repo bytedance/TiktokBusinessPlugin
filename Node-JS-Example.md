@@ -68,16 +68,16 @@ const generator = new TiktokBusinessExternalGenerator(
 
   const {body, external_data} = generator.encode(
     {
-       ...metaFields,
-       ...level1Fields,
-       ...optionalLevel2Fields,
-       ...optionalLevel3Fields
+       ...metaFields, // mandatory
+       ...level1Fields, // mandatory
+       ...optionalLevel2Fields, // optional
+       ...optionalLevel3Fields // optional
     }
   );
 
    // below will throw an exception complaining that the some field in metaField is missing
    const payload = {
-       ...level1Fields,
+       ...level1Fields, // missing metaFields
    }
    const {body,external_data) = generator.encode(payload);
 
