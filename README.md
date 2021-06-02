@@ -4,6 +4,24 @@
 Every time the end user tries to connect with Tiktok in any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
 In this doc, we are going to specify how the `external_data` is generated.
 
+### Terms definition
+- External merchant: Online merchant who wants to integrate with TiktokBusiness Plugin
+
+- Shop: The shop on the external merchant's platform.
+
+- Merchant Install App Page: Some external merchants deem any external integration(e.g. into Tiktok or FB) as the creation of  a new
+  App on their own platform, and always come up with a page which ask the user to "install" the app. If this is the case, this page should be the first page the user lands on.
+  The end user will see the **Splash page** defined below after the installation.
+  Note that not all external merchant has this concept and this page can be ignored if so.
+  
+- Splash Page: The page which is shown to the end users when the connection between
+the external merchant and tiktok is not built. Normally we assume that there is a **Connect** button on the Splash page
+
+- Onboarding flow: which includes the Tiktok's `auth page` and `setup page`.
+
+- Management page: Once the user finishes the onboarding flow, he/she will see the management page on the external merchant platform.
+This page displays all the config items the user went through as well as the status of the catalog. 
+
 ### Why does `external_data` come into play?
 1. The user clicks the **Connect** button on the **Splash Page**
    
@@ -33,25 +51,6 @@ We will upgrade any bugfixes or new features whenever possible, stay tuned.
 
 If you feel confused when reading this doc, we suggest reading the source code of the NodeJs version [here](./src/crypto.ts) or contact Tiktok's representative directly to reach out to the author
 (qiucheng@bytedance.com).
-
-### Terms definition
-- External merchant: Online merchant who wants to integrate with TiktokBusiness Plugin
-
-- Shop: The shop on the external merchant's platform.
-
-- Merchant Install App Page: Some external merchants deem any external integration(e.g. into Tiktok or FB) as the creation of  a new
-  App on their own platform, and always come up with a page which ask the user to "install" the app. If this is the case, this page should be the first page the user lands on.
-  The end user will see the **Splash page** defined below after the installation.
-  Note that not all external merchant has this concept and this page can be ignored if so.
-  
-- Splash Page: The page which is shown to the end users when the connection between
-the external merchant and tiktok is not built. Normally we assume that there is a **Connect** button on the Splash page
-
-- Onboarding flow: which includes the Tiktok's `auth page` and `setup page`.
-
-- Management page: Once the user finishes the onboarding flow, he/she will see the management page on the external merchant platform.
-This page displays all the config items the user went through as well as the status of the catalog. 
-
    
 ## Specification
 
