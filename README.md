@@ -66,9 +66,9 @@ export interface ExternalDataRequest {
 
     // level 1 fields, which are required by all platforms
     // talk to your tiktok's representative to know which constant we are using for your platform
-    ext_business_type: string;
+    external_business_type: string;
     // should be the shop id / shop hash of your platform
-    ext_business_id: string;
+    external_business_id: string;
     
 
     // level 2 fields
@@ -77,10 +77,10 @@ export interface ExternalDataRequest {
     country?: string;
     store_id?: string;
     store_name?: string;
-    store_owner_phone_number?: string;
-    store_owner_email?: string;
+    phone_number?: string;
+    email?: string;
     currency?: string;
-    website?: string;
+    website_url?: string;
     domain?: string;
 
     // level 3 fields
@@ -108,17 +108,17 @@ Example:
  {
   "version": "1.0",
   "timestamp": "1622469374637",
-  "ext_business_type": "bigcommerce",
-  "ext_business_id": "1238928921223",
+  "external_business_type": "bigcommerce",
+  "external_business_id": "1238928921223",
   "industry": "cosmetics",
   "timezone": "UTC+0",
   "country": "CN",
   "store_id": "this is a very long store name",
   "store_name": "qq_testforbusinessaaaa",
-  "store_owner_phone_number": "1232132121232",
-  "store_owner_email": "aqqewqe@awqnemnqmq.com",
+  "phone_number": "1232132121232",
+  "email": "aqqewqe@awqnemnqmq.com",
   "currency": "RMB",
-  "website": "www.a.com/test12311sdas123",
+  "website_url": "www.a.com/test12311sdas123",
   "domain": "https://aa.com",
   "app_id": "12312321321321",
   "redirect_uri": "https://sqaure.com/api/callback"
@@ -133,10 +133,10 @@ It is worth emphasizing that
 highly recommend you comply with the rules to avoid any possible bugs.
 
 2. Generate a concatenated string in the form of `a=someValue&b=someValue2`, 
-only `version`, `timestamp`, `ext_business_type` and `ext_business_id` are used.
+only `version`, `timestamp`, `external_business_type` and `external_business_id` are used.
 As such, a possible example of all fields might be
 ```
- version=1.0&timestamp=1622469374637&ext_business_type=bigcommerce&ext_business_id=1238928921223
+ version=1.0&timestamp=1622469374637&external_business_type=bigcommerce&external_business_id=1238928921223
 ```
 
 
@@ -153,8 +153,8 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
 4. Append the hmac value to the payload in step 1, example:
 ```
    {
-   "ext_business_type": "bigcommerce",
-   "ext_business_id": "1238928921223",
+   "external_business_type": "bigcommerce",
+   "external_business_id": "1238928921223",
    "version": "1.0",
    "timestamp": "1622474263939",
    "industry": "cosmetics",
@@ -162,10 +162,10 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "country": "CN",
    "store_id": "this is a very long store name",
    "store_name": "qq_testforbusinessaaaa",
-   "store_owner_phone_number": "1232132121232",
-   "store_owner_email": "aqqewqe@awqnemnqmq.com",
+   "phone_number": "1232132121232",
+   "email": "aqqewqe@awqnemnqmq.com",
    "currency": "RMB",
-   "website": "www.a.com/test12311sdas123",
+   "website_url": "www.a.com/test12311sdas123",
    "domain": "https://aa.com",
    "app_id": "12312321321321",
    "redirect_uri": "https://sqaure.com/api/callback",

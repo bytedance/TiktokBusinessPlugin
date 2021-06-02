@@ -1,8 +1,6 @@
 export interface GENERATOR_OPTIONS {
-    // if true, only check ext_business_type, ext_business_id and timestamp,
+    // if true, only check external_business_type, external_business_id and timestamp,
     // which is the case for bigcommerce.
-    level2: boolean;
-    level3: boolean;
     debug: (...args: string[])=> any | undefined;
     validationLength: number; // defaults to DEFAULT_VALID_LENGTH
 }
@@ -16,10 +14,8 @@ export interface ExternalDataRequest {
 
     // level1 fields
     // 'bigcommerce' | 'woocommerce' | 'square' | 'presto'
-    ext_business_type: string;
-    ext_business_id: string;
-
-
+    external_business_type: string;
+    external_business_id: string;
 
     // level2 fields
     industry?: string;
@@ -27,10 +23,10 @@ export interface ExternalDataRequest {
     country?: string;
     store_id?: string;
     store_name?: string;
-    store_owner_phone_number?: string;
-    store_owner_email?: string;
+    phone_number?: string;
+    email?: string;
     currency?: string;
-    website?: string;
+    website_url?: string;
     domain?: string;
 
     // level3 fields

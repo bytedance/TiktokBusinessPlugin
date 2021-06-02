@@ -24,8 +24,8 @@ const generator = new TiktokBusinessExternalDataGenerator(key, {
 
 // the details of the payload will be described below
 const payload = {
-  "ext_business_type": "bigcommerce",
-    "ext_business_id": "1238928921223",
+  "external_business_type": "bigcommerce",
+    "external_business_id": "1238928921223",
     "version" : "1.0",
     "timestamp" :  "1622476491290",
     "industry": "cosmetics",
@@ -33,10 +33,10 @@ const payload = {
     "country": "CN",
     "store_id": "this is a very long store name",
     "store_name": "qq_testforbusinessaaaa",
-    "store_owner_phone_number": "1232132121232",
-    "store_owner_email": "aqqewqe@awqnemnqmq.com",
+    "phone_number": "1232132121232",
+    "email": "aqqewqe@awqnemnqmq.com",
     "currency": "RMB",
-    "website": "www.a.com/test12311sdas123",
+    "website_url": "www.a.com/test12311sdas123",
     "domain": "https://aa.com",
     "app_id": "12312321321321",
     "redirect_uri": "https://sqaure.com/api/callback"
