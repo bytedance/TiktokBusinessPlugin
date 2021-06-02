@@ -1,7 +1,7 @@
 # Tiktok Business Plugin `external_data` Specification
 
 ## Background
-Every time the end user tries to connect with Tiktok in any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
+Every time the end user tries to connect with Tiktok from any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
 In this doc, we are going to specify how the `external_data` is generated.
 
 ### Terms definition
