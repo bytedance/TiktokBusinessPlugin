@@ -1,31 +1,35 @@
 export interface GENERATOR_OPTIONS {
-    // if true, only check external_business_type, external_business_id and timestamp,
+    // if true, only check business_platform, external_business_id and timestamp,
     // which is the case for bigcommerce.
     debug: (...args: string[])=> any | undefined;
     validationLength: number; // defaults to DEFAULT_VALID_LENGTH
 }
 
 export interface ExternalDataRequest {
-    // metafields
+    // meta fields
     // version is required as a hint sine we might need to upgrade fields in the future
     version: string;
     // timestamp "" + Date.now()
     timestamp: string;
 
     // level1 fields
-    // 'bigcommerce' | 'woocommerce' | 'square' | 'presto'
-    external_business_type: string;
+    business_platform: string;
     external_business_id: string;
 
     // level2 fields
-    industry?: string;
+    // https://docs.google.com/document/d/1-A_yuy1Fc9uUc-UCc8PQtOvRm5BS6B9N_Z-PNx8c_lQ/edit#heading=h.2hvcnfua6ha6
+    industry_id?: string;
+
+    // GMT+/-hh:mm format, for example, GMT-07:00 GMT+06:30
     timezone?: string;
+    // available countries and currency mappings can be found at
+    // https://docs.google.com/document/d/1-A_yuy1Fc9uUc-UCc8PQtOvRm5BS6B9N_Z-PNx8c_lQ/edit#
     country?: string;
-    store_id?: string;
+    currency?: string;
+    // store hash or name
     store_name?: string;
     phone_number?: string;
     email?: string;
-    currency?: string;
     website_url?: string;
     domain?: string;
 

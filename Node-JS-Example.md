@@ -24,7 +24,7 @@ const generator = new TiktokBusinessExternalDataGenerator(key, {
 
 // the details of the payload will be described below
 const payload = {
-  "external_business_type": "bigcommerce",
+  "business_platform": "bigcommerce",
     "external_business_id": "1238928921223",
     "version" : "1.0",
     "timestamp" :  "1622476491290",
@@ -53,7 +53,7 @@ console.log(external_data);
 ```
 const generator = new TiktokBusinessExternalDataGenerator(
    // key is used to generate hmac, be sure not to expose it to the public or commit to any of your codebase
-   // Contact tiktok's representative to get to know the key for your platform
+   // Marketing Api App secret
     key,
     {
         debug: undefined | console.log.bind(console) | yourLogger.log.bind(yourLogger)

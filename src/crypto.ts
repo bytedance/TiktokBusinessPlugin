@@ -5,7 +5,7 @@ import {InvalidRequestError, InvalidExternalDataError} from "./error";
 
 const crypto = require('crypto');
 
-const level1Fields = ["external_business_type", "external_business_id"];
+const level1Fields = ["business_platform", "external_business_id"];
 const metaFields = ["version", "timestamp"];
 
 export class TiktokBusinessExternalDataGenerator {

@@ -1,5 +1,5 @@
 {
-    "external_business_type": "bigcommerce",
+    "business_platform": "bigcommerce",
     "external_business_id": "1238928921223",
     "industry": "cosmetics",
     "timezone": "UTC+0",

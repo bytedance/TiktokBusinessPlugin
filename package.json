@@ -1,6 +1,6 @@
 {
     "name": "@ad/tiktok_business_plugin_helper",
-    "version": "0.0.12",
+    "version": "0.1.0",
     "files": [
         "output",
         "test-jsons"
