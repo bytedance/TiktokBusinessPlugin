@@ -1,5 +1,5 @@
 {
-    "name": "@ad/tiktok_business_plugin_helper",
+    "name": "@bytedance-ad/business-plugin-helper",
     "version": "0.1.0",
     "files": [
         "output",

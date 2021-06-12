@@ -40,14 +40,22 @@ export interface ExternalDataRequest {
     // the redirect_uri should be a callback url hosted by them and they are responsible for exachanging the
     // auth code for access token by themselves.
 
-    // the external business platform should apply a MApi app first.
+    // For platform who commissions Tiktok to create the management page, please ignore the following fields!
+
+    // For platform who wants to create the management page by themselves, you'll have to apply for a Tiktok Mapi app
+    // first. As such, you will be able to call Tiktok MApi via our access_token
+    // https://ads.tiktok.com/marketing_api/docs?rid=n1ow2qmxk7&id=1701890909484033
+
+    // here is your MApi app_id
     app_id?: string;
     // The redirect_uri parameter should be the same value as the one in the MApi app configuration
     // this uri should be hosted by external business platform
+    // when the user clicks "finish setup", Tiktok's server will launch an oauth2 flow using app_id and redirect_uri
+    // and will take the user to "redirect_uri" along with 2 parameters, the auth_code and the state which is defined below
+    // it is the external platform's responsibility to exchange auth_code for accessToken and save it in their own storage
     redirect_uri?: string;
-
-    // any extra information for your own convenience
-    extra?: Record<string, string>;
+    // pass in any data you like, and tiktok return it as is in the oauth flow
+    state?: string;
 }
 
 export interface EffectiveExternalData extends ExternalDataRequest{

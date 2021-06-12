@@ -83,25 +83,29 @@ export interface ExternalDataRequest {
     website_url?: string;
     domain?: string;
 
-    // level 3 fields
-
-    /* Some platforms need to store TikTok Mapi accessToken on their side
-    * in order to fetch catalog information on the Management page.
-    * when the user clicks "finish setup", we will use the following information to start an oauth2 flow,
-    * the app_id will be used to trigger an oauth request,
-    * while the redirect_uri should be a callback url hosted by the external platform and they shoule be responsible for exachanging the
-    * auth code for access token by themselves.
-
-    // the external business platform should apply a MApi app first.
-    // https://ads.tiktok.com/marketing_api/docs?rid=cwp2z3z2cl5&id=1688969396145153
+    
+    /* level 3 fields
+     * For platform who commissions Tiktok to create the management page, please ignore the following fields!
+     *
+     * For platform who wants to create the management page by themselves, you'll have to apply for a Tiktok Mapi app
+     * first. As such, you will be able to call Tiktok MApi via our access_token
+     * https://ads.tiktok.com/marketing_api/docs?rid=n1ow2qmxk7&id=1701890909484033
+     * When the user clicks "finish setup", Tiktok's server will launch an oauth2 flow using app_id and redirect_uri
+     * and will take the user to "redirect_uri" along with 2 parameters, the auth_code and the state which are defined below
+     * it is the external platform's responsibility to exchange auth_code for accessToken and save it in their own storage
+    */
+    
+    // here is your MApi app_id, which will become available after the approval of your MApi app.
     app_id?: string;
-
+    
     // The redirect_uri parameter should be the same value as the one in the MApi app configuration
-    // and this uri should be hosted by external business platform
+    // this uri should be hosted by the server of the external business platform.
     redirect_uri?: string;
     
-    // any extra information for your own convenience
-    extra?: Record<string, string>;}
+    // pass in any data you like, and tiktok will pass it back in a query param when redirecting back to your server
+    // pass in the state as a normal string, no need to encode it, and when tiktok gives it back to you,
+    // we will use encodeURIComponent(youState) and its your responsibility to decodeURIComponent(state) on your side
+    state?: string;
 ```
 Example:
 ```
@@ -121,7 +125,8 @@ Example:
   "website_url": "www.a.com/test12311sdas123",
   "domain": "https://aa.com",
   "app_id": "12312321321321",
-  "redirect_uri": "https://sqaure.com/api/callback"
+  "redirect_uri": "https://sqaure.com/api/callback",
+  "state" :"someConvenientInfo"
 }
 ```
 
@@ -169,6 +174,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "domain": "https://aa.com",
    "app_id": "12312321321321",
    "redirect_uri": "https://sqaure.com/api/callback",
+    "state" :"someConvenientInfo"
    "hmac": "6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49"
    }
 ```
