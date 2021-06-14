@@ -163,7 +163,7 @@ export class TiktokBusinessExternalDataGenerator {
    * convert the base64 str back to json body,
    * @param base64Str
    */
-  async decodeAndVerify(base64Str: string) {
+  async decodeAndVerify(base64Str: string, justDecode = false) {
     if (!base64Str) {
       throw new InvalidExternalDataError("external_data is empty");
     }
@@ -173,9 +173,11 @@ export class TiktokBusinessExternalDataGenerator {
     } catch (e) {
       throw new InvalidExternalDataError("Failed to parse external_data");
     }
-    this.checkFieldsValid(payload);
-    this.checkPayloadTimeValidity(payload);
-    await this.checkHmacValid(payload);
+    if(!justDecode) {
+      this.checkFieldsValid(payload);
+      this.checkPayloadTimeValidity(payload);
+      await this.checkHmacValid(payload);
+    }
     return payload;
   }
 }
