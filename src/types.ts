@@ -54,7 +54,7 @@ export interface ExternalDataRequest {
     // and will take the user to "redirect_uri" along with 2 parameters, the auth_code and the state which is defined below
     // it is the external platform's responsibility to exchange auth_code for accessToken and save it in their own storage
     redirect_uri?: string;
-    // pass in any data you like, and tiktok return it as is in the oauth flow
+    // pass in any data you like, and tiktok return it as-is in the oauth flow
     state?: string;
 }
 

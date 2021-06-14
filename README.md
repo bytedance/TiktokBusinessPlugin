@@ -106,7 +106,7 @@ export interface ExternalDataRequest {
     // pass this data as a normal string and there's no need to encode it,
     // tiktok will pass it back in a query param when redirecting back to your server
     // we will use encodeURIComponent(youState) and its your responsibility to decodeURIComponent(state) on your side
-    // For instance, the url would look like `https://yourdomain/your_callback?state=${encodeURIComponent(yourState)}
+    // For instance, the url would look like `https://yourdomain/your_callback?state=${encodeURIComponent(yourState)}`
     state?: string;
 ```
 Example:
