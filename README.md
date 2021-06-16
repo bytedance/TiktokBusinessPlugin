@@ -63,6 +63,7 @@ export interface ExternalDataRequest {
     // the requst object might change from to time, this field serves as a hint to Tiktok's server
     version: string; // 1.0 for the time being, tiktok will announce any updates if needed.
     timestamp: string; // unix epoch time, the string format of Date.now()
+    locale: en | fr | es; // if passed values other than the ones listed here, we will fallback to English
 
     // level 1 fields, which are required by all platforms
     // talk to your tiktok's business_platformentative to know which constant we are using for your platform
@@ -114,6 +115,7 @@ Example:
  {
   "version": "1.0",
   "timestamp": "1622469374637",
+  "locale": "en",
   "business_platform": "bigcommerce",
   "external_business_id": "1238928921223",
   "industry": "cosmetics",
@@ -164,6 +166,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "external_business_id": "1238928921223",
    "version": "1.0",
    "timestamp": "1622474263939",
+   "locale": "en",
    "industry": "cosmetics",
    "timezone": "UTC+0",
    "country": "CN",
@@ -176,7 +179,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "domain": "https://aa.com",
    "app_id": "12312321321321",
    "redirect_uri": "https://sqaure.com/api/callback",
-    "state" :"someConvenientInfo"
+   "state" :"someConvenientInfo"
    "hmac": "6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49"
    }
 ```

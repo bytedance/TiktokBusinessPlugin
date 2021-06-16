@@ -1,6 +1,7 @@
 {
     "business_platform": "bigcommerce",
     "external_business_id": "1238928921223",
+    "locale": "en",
     "version" : "1.0",
     "industry": "cosmetics",
     "timezone": "UTC+0",

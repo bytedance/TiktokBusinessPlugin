@@ -28,6 +28,7 @@ const payload = {
     "external_business_id": "1238928921223",
     "version" : "1.0",
     "timestamp" :  "1622476491290",
+    "locale": "en",
     "industry": "cosmetics",
     "timezone": "UTC+0",
     "country": "CN",

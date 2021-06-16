@@ -11,6 +11,8 @@ export interface ExternalDataRequest {
     version: string;
     // timestamp "" + Date.now()
     timestamp: string;
+    // Locale currently supported: English, French, Spanish
+    locale: string;
 
     // level1 fields
     business_platform: string;
@@ -48,6 +50,8 @@ export interface ExternalDataRequest {
 
     // here is your MApi app_id
     app_id?: string;
+    // the scope in your MApi config, if not passed, we will assume you are going to apply for all scopes
+    scope?: number[];
     // The redirect_uri parameter should be the same value as the one in the MApi app configuration
     // this uri should be hosted by external business platform
     // when the user clicks "finish setup", Tiktok's server will launch an oauth2 flow using app_id and redirect_uri

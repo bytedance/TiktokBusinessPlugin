@@ -17,7 +17,26 @@
         "test": "npm run build && jest",
         "normal": "yarn start -f test-jsons/test.json -key 123 -d",
         "gen-outdated-string": "yarn start -f test-jsons/test.json -key 123 -d -o",
-        "missing-version": "yarn start -f test-jsons/missing-version.json -key 123 -d"
+        "missing-version": "yarn start -f test-jsons/missing-version.json -key 123 -d",
+        "release": "yarn build && standard-version && yarn update-npm-and-git",
+        "release-patch": "yarn build && standard-version --release-as patch && yarn update-npm-and-git",
+        "release-minor": "yarn build && standard-version --release-as minor && yarn update-npm-and-git",
+        "release-major": "yarn build && standard-version --release-as major && yarn update-npm-and-git",
+        "release-alpha": "yarn build && standard-version --prerelease alpha --skip.changelog --skip.commit && yarn update-npm",
+        "update-npm": "npm publish",
+        "lint": "echo linting not enabled for the time being",
+        "update-npm-and-git": "git push --follow-tags origin master && yarn update-npm",
+        "prerel": "yarn lint && standard-version --dry-run",
+        "prerel-alpha": "yarn prerel --prerelease alpha",
+        "prerel-patch": "yarn lint && yarn prerel -- --release-as patch",
+        "prerel-minor": "yarn lint && yarn prerel -- --release-as minor",
+        "prerel-major": "yarn lint && yarn prerel -- --release-as major"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "yarn lint"
+        }
     },
     "dependencies": {
         "chalk": "^4.1.1"
@@ -26,11 +45,16 @@
         "@babel/core": "^7.14.3",
         "@babel/preset-env": "^7.14.2",
         "@babel/preset-typescript": "^7.13.0",
+        "@commitlint/cli": "^12.1.4",
+        "@commitlint/config-conventional": "^12.1.4",
         "@types/jest": "^26.0.23",
         "babel-jest": "^27.0.1",
         "commander": "^7.2.0",
+        "commitlint": "^12.1.4",
+        "husky": "4.2.5",
         "jest": "^27.0.1",
         "shallow-equal": "^1.2.1",
+        "standard-version": "^9.3.0",
         "typescript": "^4.3.2"
     }
 }

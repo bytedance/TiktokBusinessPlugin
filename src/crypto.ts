@@ -6,7 +6,7 @@ import {InvalidRequestError, InvalidExternalDataError} from "./error";
 const crypto = require('crypto');
 
 const level1Fields = ["business_platform", "external_business_id"];
-const metaFields = ["version", "timestamp"];
+const metaFields = ["version", "timestamp", "locale"];
 
 export class TiktokBusinessExternalDataGenerator {
   /**
@@ -162,6 +162,7 @@ export class TiktokBusinessExternalDataGenerator {
   /**
    * convert the base64 str back to json body,
    * @param base64Str
+   * @param justDecode just decode the string, for internal test only
    */
   async decodeAndVerify(base64Str: string, justDecode = false) {
     if (!base64Str) {
@@ -173,7 +174,7 @@ export class TiktokBusinessExternalDataGenerator {
     } catch (e) {
       throw new InvalidExternalDataError("Failed to parse external_data");
     }
-    if(!justDecode) {
+    if (!justDecode) {
       this.checkFieldsValid(payload);
       this.checkPayloadTimeValidity(payload);
       await this.checkHmacValid(payload);
