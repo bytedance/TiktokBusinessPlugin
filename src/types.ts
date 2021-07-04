@@ -26,7 +26,7 @@ export interface ExternalDataRequest {
     timezone?: string;
     // available countries and currency mappings can be found at
     // https://docs.google.com/document/d/1-A_yuy1Fc9uUc-UCc8PQtOvRm5BS6B9N_Z-PNx8c_lQ/edit#
-    country?: string;
+    countryRegion?: string;
     currency?: string;
     // store hash or name
     store_name?: string;

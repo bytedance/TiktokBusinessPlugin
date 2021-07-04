@@ -75,7 +75,7 @@ export interface ExternalDataRequest {
     // level 2 fields
     industry?: string;
     timezone?: string;
-    country?: string;
+    countryRegion?: string;
     store_id?: string;
     store_name?: string;
     phone_number?: string;
@@ -120,7 +120,7 @@ Example:
   "external_business_id": "1238928921223",
   "industry": "cosmetics",
   "timezone": "UTC+0",
-  "country": "CN",
+  "countryRegion": "CN",
   "store_id": "this is a very long store name",
   "store_name": "qq_testforbusinessaaaa",
   "phone_number": "1232132121232",
@@ -169,7 +169,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "locale": "en",
    "industry": "cosmetics",
    "timezone": "UTC+0",
-   "country": "CN",
+   "countryRegion": "CN",
    "store_id": "this is a very long store name",
    "store_name": "qq_testforbusinessaaaa",
    "phone_number": "1232132121232",
