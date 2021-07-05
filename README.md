@@ -4,6 +4,8 @@
 Every time the end user tries to connect with Tiktok from any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
 In this doc, we are going to specify how the `external_data` is generated.
 
+**[Here](https://ads.tiktok.com/business-extension/external_data_helper) is a place for you to check the validity of your external_data.**
+
 ### Terms definition
 - External merchant: Online merchant who wants to integrate with TiktokBusiness Plugin
 
