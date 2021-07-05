@@ -32,7 +32,6 @@ const payload = {
     "industry": "cosmetics",
     "timezone": "UTC+0",
     "countryRegion": "CN",
-    "store_id": "this is a very long store name",
     "store_name": "qq_testforbusinessaaaa",
     "phone_number": "1232132121232",
     "email": "aqqewqe@awqnemnqmq.com",

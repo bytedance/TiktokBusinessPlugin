@@ -35,7 +35,7 @@ to
    - identify the shop
    - the fields which facilitates the creation of Tiktok's adv account and business center on the `setup page`
    - When the user clicks **Finish Setup** on the setup page, for some external merchants, Tiktok needs to launch an oauth flow to pass the 
-    access token to the external platform. `app_id` and `redirect_uri` are needed to acheive this goal.
+    access token to the external platform, the field `state` will be carried along to the final callback url.
      
 4. The `external_data` should be generated with a `KEY` codetermined by the external merchant and Tiktok's server so as to ensure
 this data is neither falsified nor tampered with.
@@ -58,6 +58,9 @@ If you feel confused when reading this doc, we suggest reading the source code o
 
 ### Generation of external_data
 1. Create a json object, which contains the following fields.
+   
+**[Here](https://ads.tiktok.com/business-extension/external_data_helper) is a place for you to check the validity of your external_data.**
+
 Below is a definition in typescript, map it to any language you prefer.
 ```
 export interface ExternalDataRequest {
@@ -74,12 +77,14 @@ export interface ExternalDataRequest {
     external_business_id: string;
     
 
-    // level 2 fields
-    industry?: string;
+    // level 2 fields,
+    // Take a look at this [page](https://ads.tiktok.com/business-extension/external_data_helper)
+    // if you are not sure how to set the relevant fields
+    industry?: string; 
     timezone?: string;
     countryRegion?: string;
-    store_id?: string;
     store_name?: string;
+    // format should be like +86 13817282221
     phone_number?: string;
     email?: string;
     currency?: string;
@@ -123,7 +128,6 @@ Example:
   "industry": "cosmetics",
   "timezone": "UTC+0",
   "countryRegion": "CN",
-  "store_id": "this is a very long store name",
   "store_name": "qq_testforbusinessaaaa",
   "phone_number": "1232132121232",
   "email": "aqqewqe@awqnemnqmq.com",
@@ -172,15 +176,12 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "industry": "cosmetics",
    "timezone": "UTC+0",
    "countryRegion": "CN",
-   "store_id": "this is a very long store name",
    "store_name": "qq_testforbusinessaaaa",
    "phone_number": "1232132121232",
    "email": "aqqewqe@awqnemnqmq.com",
    "currency": "RMB",
    "website_url": "www.a.com/test12311sdas123",
    "domain": "https://aa.com",
-   "app_id": "12312321321321",
-   "redirect_uri": "https://sqaure.com/api/callback",
    "state" :"someConvenientInfo"
    "hmac": "6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49"
    }
