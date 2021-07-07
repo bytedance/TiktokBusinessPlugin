@@ -148,10 +148,10 @@ It is worth emphasizing that
 highly recommend you comply with the rules to avoid any possible bugs.
 
 2. Generate a concatenated string in the form of `a=someValue&b=someValue2`, 
-only `version`, `timestamp`, `business_platform` and `external_business_id` are used.
+only `version`, `timestamp`,`locale`, `business_platform` and `external_business_id` are used.
 As such, a possible example of all fields might be
 ```
- version=1.0&timestamp=1622469374637&business_platform=bigcommerce&external_business_id=1238928921223
+ version=1.0&timestamp=1622469374637&locale-en&business_platform=bigcommerce&external_business_id=1238928921223
 ```
 
 
