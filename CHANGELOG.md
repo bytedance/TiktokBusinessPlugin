@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.4...v0.1.8) (2021-07-07)
+
+
+### Bug Fixes
+
+* bump v ([aefdee4](https://github.com/bytedance/TiktokBusinessPlugin/commit/aefdee4138dc1eb4340c95da79b962876e7970d7))
+* change countryRegion to country_region ([2b77f2d](https://github.com/bytedance/TiktokBusinessPlugin/commit/2b77f2d4502217b5b2c5dc5078a7f2b911350d32))
+* country=>countryRegion ([65bf483](https://github.com/bytedance/TiktokBusinessPlugin/commit/65bf4834fe6427150e788ab9c0051d8f47220fc4))
+* country=>countryRegion ([5ccf896](https://github.com/bytedance/TiktokBusinessPlugin/commit/5ccf8961b341ab23b83af6f93e0cd7c278e3f491))
+* upgrade readme ([5a236c2](https://github.com/bytedance/TiktokBusinessPlugin/commit/5a236c268b842f1a92d69302f25d39cbd48d101b))
+* upgrade readme ([74c70e1](https://github.com/bytedance/TiktokBusinessPlugin/commit/74c70e1e8e4072d2113aff91a38a57cbc9d3fa2e))
+
 ### [0.1.4](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.3...v0.1.4) (2021-06-16)
 
 ### 0.1.3 (2021-06-16)
