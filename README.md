@@ -82,7 +82,7 @@ export interface ExternalDataRequest {
     // if you are not sure how to set the relevant fields
     industry?: string; 
     timezone?: string;
-    countryRegion?: string;
+    country_region?: string;
     store_name?: string;
     // format should be like +86 13817282221
     phone_number?: string;
@@ -127,7 +127,7 @@ Example:
   "external_business_id": "1238928921223",
   "industry": "cosmetics",
   "timezone": "UTC+0",
-  "countryRegion": "CN",
+  "country_region": "CN",
   "store_name": "qq_testforbusinessaaaa",
   "phone_number": "1232132121232",
   "email": "aqqewqe@awqnemnqmq.com",
@@ -175,7 +175,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
    "locale": "en",
    "industry": "cosmetics",
    "timezone": "UTC+0",
-   "countryRegion": "CN",
+   "country_region": "CN",
    "store_name": "qq_testforbusinessaaaa",
    "phone_number": "1232132121232",
    "email": "aqqewqe@awqnemnqmq.com",

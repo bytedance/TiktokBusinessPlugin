@@ -31,7 +31,7 @@ const payload = {
     "locale": "en",
     "industry": "cosmetics",
     "timezone": "UTC+0",
-    "countryRegion": "CN",
+    "country_region": "CN",
     "store_name": "qq_testforbusinessaaaa",
     "phone_number": "1232132121232",
     "email": "aqqewqe@awqnemnqmq.com",

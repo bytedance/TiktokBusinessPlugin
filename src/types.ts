@@ -26,7 +26,7 @@ export interface ExternalDataRequest {
     timezone?: string;
     // available countries and currency mappings can be found at
     // https://docs.google.com/document/d/1-A_yuy1Fc9uUc-UCc8PQtOvRm5BS6B9N_Z-PNx8c_lQ/edit#
-    countryRegion?: string;
+    country_region?: string;
     currency?: string;
     // store hash or name
     store_name?: string;
@@ -35,9 +35,12 @@ export interface ExternalDataRequest {
     website_url?: string;
     domain?: string;
 
-    // If you need to create your own management pages(Square), you need to create an app via
+    // If you need to create your own management pages, you need to create an app via
     // https://ads.tiktok.com/marketing_api/docs?rid=qf4zvptcoa&id=1702716474845185
     // and contact Tiktok representative to whitelist for you.
+    // Tiktok will launch a new oauth flow using app_id and redirect_uri
+    app_id?: string;
+    redirect_uri?: string;
 
     // When user clicks finish setup, we will launch an oauth2 flow using the app_id you provided
     // and redirect to your redirect_uri. If you pass in state, we will give it back as-is
