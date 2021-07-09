@@ -123,7 +123,7 @@ Example:
   "version": "1.0",
   "timestamp": "1622469374637",
   "locale": "en",
-  "business_platform": "bigcommerce",
+  "business_platform": "PLATFORM_NAME",
   "external_business_id": "1238928921223",
   "industry": "cosmetics",
   "timezone": "UTC+0",
@@ -135,7 +135,7 @@ Example:
   "website_url": "www.a.com/test12311sdas123",
   "domain": "https://aa.com",
   "app_id": "12312321321321",
-  "redirect_uri": "https://sqaure.com/api/callback",
+  "redirect_uri": "https://example.com/api/callback",
   "state" :"someConvenientInfo"
 }
 ```
@@ -149,7 +149,7 @@ highly recommend you comply with the rules to avoid any possible bugs.
 
 2. Generate a concatenated string in the form of `a=someValue&b=someValue2`, 
 only `version`, `timestamp`,`locale`, `business_platform` and `external_business_id` are used.
-As such, a possible example of all fields might be
+As such, a possible example of all fields might be, note that the ordering is important!
 ```
  version=1.0&timestamp=1622469374637&locale-en&business_platform=bigcommerce&external_business_id=1238928921223
 ```
@@ -168,7 +168,7 @@ hmac example: 6afb803ad5bbe2be9dd09dc2bcc4513db1d6493dd214241f7e4c1dc0c89d8e49
 4. Append the hmac value to the payload in step 1, example:
 ```
    {
-   "business_platform": "bigcommerce",
+   "business_platform": "PLATFORM_NAME",
    "external_business_id": "1238928921223",
    "version": "1.0",
    "timestamp": "1622474263939",
