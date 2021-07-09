@@ -110,10 +110,12 @@ export class TiktokBusinessExternalDataGenerator {
     }
   }
 
-
   private checkFieldsValid(payload: EffectiveExternalData) {
     function emptinessCheck(fieldName: string) {
       const v = payload[fieldName];
+      if(typeof v !== 'string'){
+        throw new InvalidExternalDataError(fieldName + " should be a string");
+      }
       if (!v || v.trim().length === 0) {
         throw new InvalidExternalDataError(fieldName + " is empty");
       }
