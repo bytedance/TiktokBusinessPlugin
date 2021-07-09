@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.10...v0.1.11) (2021-07-09)
+
+
+### Bug Fixes
+
+* allow params to be number, but will convert to string when validating ([5bd1644](https://github.com/bytedance/TiktokBusinessPlugin/commit/5bd16449c64e788fb3c5f1233f39de6fa38daa20))
+
 ### [0.1.10](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.8...v0.1.10) (2021-07-09)
 
 
