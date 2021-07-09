@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.8...v0.1.10) (2021-07-09)
+
+
+### Bug Fixes
+
+* add locale to the sample str ([87c3bd3](https://github.com/bytedance/TiktokBusinessPlugin/commit/87c3bd348430a9ea81409b382ee03c444ab94f87))
+* enforce all required fields to be string ([70b0b69](https://github.com/bytedance/TiktokBusinessPlugin/commit/70b0b69407f4eea0bdcee508d6ba47e54020dc5a))
+
 ### [0.1.8](https://github.com/bytedance/TiktokBusinessPlugin/compare/v0.1.4...v0.1.8) (2021-07-07)
 
 
