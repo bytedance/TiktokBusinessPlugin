@@ -28,7 +28,7 @@ This page displays all the config items the user went through as well as the sta
 1. The user clicks the **Connect** button on the **Splash Page**
    
 2. a new tab will open up, and the possible url might be
-`https://ads.tiktok.com/tbp/auth?external_data=xxxxxxxxxxxx`
+`https://ads.tiktok.com/business-extension/auth?external_data=xxxxxxxxxxxx`
 
 3. The url of the tab contains a parameter called `external_data`, which encapsulates all the information Tiktok needs 
 to
