@@ -212,38 +212,77 @@ the same steps to generate an hmac, finally we compare the hmac generated with t
 4. Prestashop, backend store accessToken, frontend
 
 ## Close method ##
-- 'close_from_tiktok': tiktok will close the setup page after user clicks 'finish setup'. This is the default behavior if you don't pass in this param.
-  
-- 'send_message', if the user clicks the 'finish_setup' btn, tiktok will only simply post a message ,
-  In order to make this feasible, watch out for your CSP rule and allow ads.tiktok.com.
-  
-  The postMessage logic will be like: 
-   
-    ```
-   const message =  btoa(JSON.stringify({
-     'type' : 'tiktok_setup_finish',
-     'external_business_id': 123, 
-     'business_platform': 'your_platform',
-     'business_profile_id: 'business_profile_id in the setup page'
-     }}); // base64 encoded json
-    window.opener.postMessage(message, your_domain);
-  ```
+- 'close_from_tiktok'(This is the default behavior if you don't pass in this param.):
+    - Tiktok will call `window.opener.location.href = redirectUri?auth_code=***&state=***` if possible 
+    - Tiktok will close the setup page after user clicks 'finish setup'.
 
-  On your end, you should
-    ```
-    tiktokWindow.on('message', (payload)=>{
-        const payload = JSON.parse(atob(payload.data));
-        // verify e.origin
-        if(!check(e.origin){
-          // do error handling
-        }
-        if(payload.type === 'tiktok_setup_finish'){
-            doSomethingWithThePayload(payload);
-            // finally close tiktok's window
-            tiktokWindow.close();
-        }
-    };
-    ```
+- 'redirect_inside_tiktok'(This is a very common way which is implemented by dozens of companies) :
+  - Tiktok will redirect the user in its window using the redirect_uri you passed in 
+    `window.location.href = ${redirect_uri}?auth_code={code}&state={state}`
+  - The backend logic of your redirect_uri will exchange authCode for accessToken and save it to DB.
+  - Your backend logic should make then make a 302 redirect to an empty page,which is also created by your platform.
+  - In the blank page, it will simply 'postMessage' to window.opener and close the current popup window.
+    Since the blank page is most of the time deployed at the same domain as `window.opener`, csp rules should not be a problem.
+  
+[comment]: <> (- 'send_message', if the user clicks the 'finish_setup' btn, tiktok will only simply post a message ,)
+
+[comment]: <> (  In order to make this feasible, watch out for your CSP rule and allow ads.tiktok.com.)
+  
+[comment]: <> (  The postMessage logic will be like: )
+   
+[comment]: <> (    ```)
+
+[comment]: <> (   const message =  btoa&#40;JSON.stringify&#40;{)
+
+[comment]: <> (     'type' : 'tiktok_setup_finish',)
+
+[comment]: <> (     'external_business_id': 123, )
+
+[comment]: <> (     'business_platform': 'your_platform',)
+
+[comment]: <> (     // this url will be your redirect_uri configured in Mapi's app and it will contain the authCode,)
+
+[comment]: <> (     // and you should be responsible for exchanging the accessToken)
+
+[comment]: <> (     'business_profile_id: 'business_profile_id in the setup page')
+
+[comment]: <> (     }}&#41;; // base64 encoded json)
+    
+[comment]: <> (  ```)
+
+[comment]: <> (  On your end, you should)
+
+[comment]: <> (    ```)
+
+[comment]: <> (    tiktokWindow.on&#40;'message', &#40;payload&#41;=>{)
+
+[comment]: <> (        const payload = JSON.parse&#40;atob&#40;payload.data&#41;&#41;;)
+
+[comment]: <> (        // verify e.origin)
+
+[comment]: <> (        if&#40;!check&#40;e.origin&#41;{)
+
+[comment]: <> (          // do error handling)
+
+[comment]: <> (        })
+
+[comment]: <> (        if&#40;payload.type === 'tiktok_setup_finish'&#41;{)
+
+[comment]: <> (            // close tiktok's window)
+
+[comment]: <> (            tiktokWindow.close&#40;&#41;;)
+
+[comment]: <> (            doSomethingWithThePayloadIfNeeded&#40;payload&#41;;)
+
+[comment]: <> (            // redirect the user to your backend to finish oauth)
+
+[comment]: <> (            window.location.href = payload.redirect_uri;)
+
+[comment]: <> (        })
+
+[comment]: <> (    };)
+
+[comment]: <> ( ```)
     
     
 - 'do_nothing': if the user clicks the 'finish_setup' btn, tiktok will do nothing and it is the external platform's duty to
