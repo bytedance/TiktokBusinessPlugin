@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.2.0...v1.2.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* add type to the close postMessage body ([0cc3035](https://github.com/bytedance/TiktokBusinessPlugin/commit/0cc3035e7c8b2a766df751275ab9d80c98751786))
+
 ## [1.2.0](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.1.0...v1.2.0) (2021-07-20)
 
 
