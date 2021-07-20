@@ -13,6 +13,8 @@ export interface ExternalDataRequest {
     timestamp: string;
     // Locale currently supported: English, French, Spanish
     locale: string;
+    // see readme for more info
+    close_method?: 'close_from_tiktok' | 'send_message' | 'do_nothing';
 
     // level1 fields
     business_platform: string;

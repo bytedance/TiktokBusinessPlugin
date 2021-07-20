@@ -69,6 +69,13 @@ export interface ExternalDataRequest {
     version: string; // 1.0 for the time being, tiktok will announce any updates if needed.
     timestamp: string; // unix epoch time, the string format of Date.now()
     locale: en | fr | es; // if passed values other than the ones listed here, we will fallback to English
+    
+    // optional, defaults to 'close_from_tiktok'
+    // No matter which option you choose, tiktok will try to do 'window.opener.focus()' and wrap it in an exception block
+    // if your csp rule does not accept our domain.
+    
+    // described at the bottom of the README, default value is 'close_from_tiktok'
+    close_method?: 'close_from_tiktok' | 'send_message' | 'do_nothing';
 
     // level 1 fields, which are required by all platforms
     // talk to your tiktok's business_platformentative to know which constant we are using for your platform
@@ -197,3 +204,44 @@ const external_data = convertIntoBase64(str);
 
 7. On the Tiktok's server side, we will do the unmarshalling of the base64 string and use 
 the same steps to generate an hmac, finally we compare the hmac generated with the one in the json payload, an error page will show up if they do not match.
+
+
+1. Square, management self-serve
+2. BIgcommerce management we do using their library
+3. Universal plan ,we do everything
+4. Prestashop, backend store accessToken, frontend
+
+## Close method ##
+- 'close_from_tiktok': tiktok will close the setup page after user clicks 'finish setup'. This is the default behavior if you don't pass in this param.
+  
+- 'send_message', if the user clicks the 'finish_setup' btn, tiktok will only simply post a message ,
+  In order to make this feasible, watch out for your CSP rule and allow ads.tiktok.com.
+  
+  The postMessage logic will be like: 
+   
+    ```
+   const message =  btoa(JSON.stringify({
+     'external_business_id': 123, 
+     'business_platform': 'your_platform',
+     'business_profile_id: 'business_profile_id in the setup page'
+     }}); // base64 encoded json
+    window.opener.postMessage(message, your_domain);
+  ```
+
+  On your end, you should
+    ```
+    tiktokWindow.on('message', (payload)=>{
+        // verify e.origin
+        const payload = JSON.parse(atob(payload.data));
+        // deal with the data
+        // finally close tiktok's window
+        tiktokWindow.close();
+    };
+    ```
+    
+    
+- 'do_nothing': if the user clicks the 'finish_setup' btn, tiktok will do nothing and it is the external platform's duty to
+  close the setup page.
+  
+  This is particular useful if the external_platform is doing long polling on their end and 
+  to see whether the business_profile is ready (e.g. business_profile.status === 2).
