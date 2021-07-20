@@ -221,6 +221,7 @@ the same steps to generate an hmac, finally we compare the hmac generated with t
    
     ```
    const message =  btoa(JSON.stringify({
+     'type' : 'tiktok_setup_finish',
      'external_business_id': 123, 
      'business_platform': 'your_platform',
      'business_profile_id: 'business_profile_id in the setup page'
@@ -231,11 +232,16 @@ the same steps to generate an hmac, finally we compare the hmac generated with t
   On your end, you should
     ```
     tiktokWindow.on('message', (payload)=>{
-        // verify e.origin
         const payload = JSON.parse(atob(payload.data));
-        // deal with the data
-        // finally close tiktok's window
-        tiktokWindow.close();
+        // verify e.origin
+        if(!check(e.origin){
+          // do error handling
+        }
+        if(payload.type === 'tiktok_setup_finish'){
+            doSomethingWithThePayload(payload);
+            // finally close tiktok's window
+            tiktokWindow.close();
+        }
     };
     ```
     
