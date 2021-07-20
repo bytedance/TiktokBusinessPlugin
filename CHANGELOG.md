@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.2.1...v1.2.2) (2021-07-20)
+
+
+### Bug Fixes
+
+* add reidrect_inside_tiktok close_method ([9b16912](https://github.com/bytedance/TiktokBusinessPlugin/commit/9b16912b6f6c855df61a6344ae08cdb81b5985d0))
+
 ### [1.2.1](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.2.0...v1.2.1) (2021-07-20)
 
 
