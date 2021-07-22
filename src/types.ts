@@ -43,6 +43,8 @@ export interface ExternalDataRequest {
     // Tiktok will launch a new oauth flow using app_id and redirect_uri
     app_id?: string;
     redirect_uri?: string;
+    // see readme
+    env?: string;
 
     // When user clicks finish setup, we will launch an oauth2 flow using the app_id you provided
     // and redirect to your redirect_uri. If you pass in state, we will give it back as-is

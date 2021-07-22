@@ -117,6 +117,12 @@ export interface ExternalDataRequest {
     // this uri should be hosted by the server of the external business platform.
     redirect_uri?: string;
     
+    // if you want to use different app_id and redirect_uri for different environment,
+    // you could pass in here, the env name should be in snake_case
+    // for example, dev,prod,qa,staging,test_env1,test_env2
+    // note that if you have different environment, you should also provide a different key to generate hmac
+    env?: string; 
+    
     // optional state in case you need it
     // pass this data as a normal string and there's no need to encode it,
     // tiktok will pass it back in a query param when redirecting back to your server
