@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.3.0...v1.3.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* add comment for env ([334d0e2](https://github.com/bytedance/TiktokBusinessPlugin/commit/334d0e2063126c2ca9520bd34e39554a841ac1aa))
+* fix comments ([4252b4a](https://github.com/bytedance/TiktokBusinessPlugin/commit/4252b4acd2081f2e197d66f7dfdec5d447234f20))
+
 ## [1.3.0](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.2.3...v1.3.0) (2021-07-22)
 
 
