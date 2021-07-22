@@ -121,6 +121,7 @@ export interface ExternalDataRequest {
     // you could pass in here, the env name should be in snake_case
     // for example, dev,prod,qa,staging,test_env1,test_env2
     // note that if you have different environment, you should also provide a different key to generate hmac
+    // defaults to production environment if not provided
     env?: string; 
     
     // optional state in case you need it
