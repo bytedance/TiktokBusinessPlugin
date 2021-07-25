@@ -19,10 +19,13 @@ In this doc, we are going to specify how the `external_data` is generated.
 - Splash Page: The page which is shown to the end users when the connection between
 the external merchant and tiktok is not built. Normally we assume that there is a **Connect** button on the Splash page
 
-- Onboarding flow: which includes the Tiktok's `auth page` and `setup page`.
+- Onboarding flow: which includes the Tiktok's `auth page`, `login/register page` and `setup page`.
 
 - Management page: Once the user finishes the onboarding flow, he/she will see the management page on the external merchant platform.
-This page displays all the config items the user went through as well as the status of the catalog. 
+This page displays all the config items the user went through as well as the status of the catalog. For some external platforms, we also provide a pixel management page in addition to the normal management page.
+
+- Note that in our jargon, we call the combination of `splash page` and the `management page` as the management suite, and call the combination of
+`auth page`, `login/register page` and `setup page` as the onboarding flow.
 
 ### Why does `external_data` come into play?
 1. The user clicks the **Connect** button on the **Splash Page**
@@ -35,7 +38,7 @@ to
    - identify the shop
    - the fields which facilitates the creation of Tiktok's adv account and business center on the `setup page`
    - When the user clicks **Finish Setup** on the setup page, for some external merchants, Tiktok needs to launch an oauth flow to pass the 
-    access token to the external platform, the field `state` will be carried along to the final callback url.
+    authCode to the external platform, the field `state` will be carried along to the final callback url.
      
 4. The `external_data` should be generated with a `KEY` codetermined by the external merchant and Tiktok's server so as to ensure
 this data is neither falsified nor tampered with.
@@ -117,11 +120,34 @@ export interface ExternalDataRequest {
     // this uri should be hosted by the server of the external business platform.
     redirect_uri?: string;
     
-    // if you want to use different app_id and redirect_uri for different environment,
-    // you could pass in here, the env name should be in snake_case
+    // Pass this parameter if you want to use different app_id and redirect_uri for different environment,
+    // the env name should be in snake_case.
     // for example, dev,prod,qa,staging,test_env1,test_env2
     // note that if you have different environment, you should also provide a different key to generate hmac
     // defaults to 'prod' environment if not provided
+    // Note that for each environment,you should apply for a different Mapi app.
+    // So if you have 3 environmnts, you should apply 3 apps and pass the app_id and redirect_uri in the form of external_data, 
+    // and finally provide us with 3 different hash keys via email or common group chats.
+    /*
+     {
+       // we don't store you app_id and redirect_uri, always encode them in the external_data.
+        aPlatform: [
+            {
+               env: 'prod',
+               key: '12345', //co-determined key to genrate hmac
+           },
+            {
+               env: 'qa',
+               key: '123456', //co-determined key to genrate hmac
+            },
+            {
+               env: 'dev',
+               key: '1234567', //co-determined key to genrate hmac
+            }
+           
+        ]
+     }
+    */
     env?: string; 
     
     // optional state in case you need it
@@ -212,11 +238,6 @@ const external_data = convertIntoBase64(str);
 7. On the Tiktok's server side, we will do the unmarshalling of the base64 string and use 
 the same steps to generate an hmac, finally we compare the hmac generated with the one in the json payload, an error page will show up if they do not match.
 
-
-1. Square, management self-serve
-2. BIgcommerce management we do using their library
-3. Universal plan ,we do everything
-4. Prestashop, backend store accessToken, frontend
 
 ## Close method ##
 - 'close_from_tiktok'(This is the default behavior if you don't pass in this param.):
