@@ -316,5 +316,7 @@ the same steps to generate an hmac, finally we compare the hmac generated with t
 - 'do_nothing': if the user clicks the 'finish_setup' btn, tiktok will do nothing and it is the external platform's duty to
   close the setup page.
   
-  This is particular useful if the external_platform is doing long polling on their end and 
+  This is particularly useful if the external_platform is doing long polling on their end and 
   to see whether the business_profile is ready (e.g. business_profile.status === 2).
+
+- If you wish to support more 'close_method' behavior, leave us an issue in github.
