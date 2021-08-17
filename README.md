@@ -150,6 +150,15 @@ export interface ExternalDataRequest {
     */
     env?: string; 
     
+    // New features will be rolled out to alpha users for internal testing before GA(Generally available)
+    // pass in the feature names which you think is ok to be displayed to the current store
+    // current there is only one supported value: 'tt_shop'
+    // e.g. whitelisted_features: ['tt_shop']
+    // Note that on the tiktok side, we do have another layer of checking logic to see whether one feature
+    // is grantable to a specific platform even if whitelisted_features is explicitly set on the external business
+    // platform's end.
+    whitelisted_features?: ['alpha_featureA','alpha_featureB'],
+    
     // optional state in case you need it
     // pass this data as a normal string and there's no need to encode it,
     // tiktok will pass it back in a query param when redirecting back to your server
@@ -320,3 +329,4 @@ the same steps to generate an hmac, finally we compare the hmac generated with t
   to see whether the business_profile is ready (e.g. business_profile.status === 2).
 
 - If you wish to support more 'close_method' behavior, leave us an issue in github.
+

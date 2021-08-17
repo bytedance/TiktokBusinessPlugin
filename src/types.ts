@@ -46,6 +46,9 @@ export interface ExternalDataRequest {
     // see readme
     env?: string;
 
+   // see README.md for more info
+    whitelisted_features?: string[];
+
     // When user clicks finish setup, we will launch an oauth2 flow using the app_id you provided
     // and redirect to your redirect_uri. If you pass in state, we will give it back as-is
     // pass in any data you like, and tiktok will return it as-is in the oauth flow
