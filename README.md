@@ -1,7 +1,7 @@
 # Tiktok Business Plugin `external_data` Specification
 
 ## Background
-Every time the end user tries to connect with Tiktok from any pages of the external merchant platform, a new tab whose url contains the query `external_data` will open up.
+Every time the end user tries to connect with Tiktok from any pages of the external merchant platform, a new tab whose url containing the query `external_data` will open up.
 In this doc, we are going to specify how the `external_data` is generated.
 
 **[Here](https://ads.tiktok.com/business-extension/external_data_helper) is a place for you to check the validity of your external_data.**
@@ -78,7 +78,7 @@ export interface ExternalDataRequest {
     // if your csp rule does not accept our domain.
     
     // described at the bottom of the README, default value is 'close_from_tiktok'
-    close_method?: 'close_from_tiktok' | 'send_message' | 'do_nothing';
+    close_method?: 'close_from_tiktok' | 'redirect_inside_tiktok' | 'send_message' | 'do_nothing';
 
     // level 1 fields, which are required by all platforms
     // talk to your tiktok's business_platformentative to know which constant we are using for your platform
