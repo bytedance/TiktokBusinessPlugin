@@ -1,6 +1,6 @@
 {
     "name": "@bytedance-ad/business-plugin-helper",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "files": [
         "output",
         "test-jsons"
