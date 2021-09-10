@@ -147,9 +147,7 @@ export class TiktokBusinessExternalDataGenerator {
     if (this.debug) {
       this.debug(chalk.bgYellow.bold("\nModified payload\n", JSON.stringify(body, null, 2)));
     }
-    const external_data = typeof window === 'undefined' ?
-      Buffer.from(JSON.stringify(body)).toString("base64")
-      : btoa(JSON.stringify(body));
+    const external_data = TiktokBusinessExternalDataGenerator.payloadToStr(body);
 
     // 2063 is the maximum length for any url in the browser
     if (external_data.length > 1950) {
@@ -159,6 +157,16 @@ export class TiktokBusinessExternalDataGenerator {
       body,
       external_data
     };
+  }
+
+  private static payloadToStr(body: EffectiveExternalData){
+    return typeof window === 'undefined' ?
+        Buffer.from(JSON.stringify(body)).toString("base64")
+        : btoa(JSON.stringify(body));
+  }
+
+  private static strToPayload(base64Str: string){
+    return  JSON.parse(Buffer.from(base64Str, 'base64').toString("utf-8")) as EffectiveExternalData;
   }
 
   /**
@@ -172,7 +180,7 @@ export class TiktokBusinessExternalDataGenerator {
     }
     let payload: EffectiveExternalData;
     try {
-      payload = JSON.parse(Buffer.from(base64Str, 'base64').toString("utf-8")) as EffectiveExternalData;
+      payload = TiktokBusinessExternalDataGenerator.strToPayload(base64Str);
     } catch (e) {
       throw new InvalidExternalDataError("Failed to parse external_data");
     }
@@ -182,5 +190,13 @@ export class TiktokBusinessExternalDataGenerator {
       await this.checkHmacValid(payload);
     }
     return payload;
+  }
+
+  static addAttributeToExternalDataStr(externalDataStr: string, obj: {[key: string]: any}){
+    const payload = TiktokBusinessExternalDataGenerator.strToPayload(externalDataStr);
+    for(const key of Object.keys(obj)){
+      payload[key] = obj[key];
+    }
+    return TiktokBusinessExternalDataGenerator.payloadToStr(payload);
   }
 }

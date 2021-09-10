@@ -23,6 +23,26 @@ test('Normal case', async () => {
   expect(shallowEqualObjects(payload, body)).toBe(true);
 });
 
+test('add attribute case', async () => {
+  // @ts-ignore
+  const {body, external_data} = await generator.encode({
+    ...data,
+    timestamp: "" + Date.now(),
+  });
+  const newStr = TiktokBusinessExternalDataGenerator.addAttributeToExternalDataStr(external_data, {
+    a: 'a',
+    b: 'b',
+  });
+
+  const payload = await generator.decodeAndVerify(newStr);
+  expect(shallowEqualObjects(payload, {
+    ...body,
+    a: 'a',
+    b: 'b',
+  })).toBe(true);
+});
+
+
 // base 64 is tampered with
 test('Tampered with case', async () => {
   // @ts-ignore

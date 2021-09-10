@@ -5,7 +5,7 @@ export interface GENERATOR_OPTIONS {
     validationLength: number; // defaults to DEFAULT_VALID_LENGTH
 }
 
-export interface ExternalDataRequest {
+export interface ExternalDataRequest<Extra = any>{
     // meta fields
     // version is required as a hint sine we might need to upgrade fields in the future
     version: string;
@@ -53,6 +53,9 @@ export interface ExternalDataRequest {
     // and redirect to your redirect_uri. If you pass in state, we will give it back as-is
     // pass in any data you like, and tiktok will return it as-is in the oauth flow
     state?: string;
+
+    // in case you need any extra data
+    extra?: Extra;
 }
 
 export interface EffectiveExternalData extends ExternalDataRequest{
