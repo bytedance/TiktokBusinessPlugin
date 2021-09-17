@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.5.1...v2.0.0) (2021-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* extract generator into an abstract one for better future extension
+
+### Features
+
+* extract generator into an abstract one for better future extension ([0a3b0e2](https://github.com/bytedance/TiktokBusinessPlugin/commit/0a3b0e28d4d10a3d8f3b1b2d330dc05feb033af7))
+
 ### [1.5.1](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.5.0...v1.5.1) (2021-09-10)
 
 ## [1.5.0](https://github.com/bytedance/TiktokBusinessPlugin/compare/v1.4.0...v1.5.0) (2021-09-10)
