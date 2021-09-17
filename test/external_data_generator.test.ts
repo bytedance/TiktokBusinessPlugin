@@ -1,4 +1,4 @@
-import {TiktokBusinessExternalDataGenerator} from '../src/crypto';
+import {TiktokBusinessExternalDataGenerator} from '../src/tbp_external_data_generator';
 // test data that does not include app_id and redirect_uri
 import data from '../test-jsons/test.json';
 import {shallowEqualObjects} from 'shallow-equal';

@@ -3,7 +3,7 @@
 import commander, {Command} from "commander";
 import fs from 'fs';
 import {ExternalDataRequest} from "./types";
-import {TiktokBusinessExternalDataGenerator} from "./crypto";
+import {TiktokBusinessExternalDataGenerator} from "./tbp_external_data_generator";
 import chalk from "chalk";
 import {DEFAULT_VALID_LENGTH} from "./const";
 

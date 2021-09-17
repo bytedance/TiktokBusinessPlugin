@@ -1,10 +1,3 @@
-export interface GENERATOR_OPTIONS {
-    // if true, only check business_platform, external_business_id and timestamp,
-    // which is the case for bigcommerce.
-    debug: (...args: string[])=> any | undefined;
-    validationLength: number; // defaults to DEFAULT_VALID_LENGTH
-}
-
 export interface ExternalDataRequest<Extra = any>{
     // meta fields
     // version is required as a hint sine we might need to upgrade fields in the future
