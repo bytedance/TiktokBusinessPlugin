@@ -49,6 +49,10 @@ export interface ExternalDataRequest<Extra = any>{
 
     // in case you need any extra data
     extra?: Extra;
+
+    // whether this is used for testing purpose
+    // defaults to false
+    is_test?: boolean;
 }
 
 export interface EffectiveExternalData extends ExternalDataRequest{
